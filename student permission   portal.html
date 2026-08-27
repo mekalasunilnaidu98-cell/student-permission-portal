@@ -1,0 +1,2907 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Permission Request Portal</title>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* =====================================================
+           BODY
+        ===================================================== */
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                #f1f5f9;
+
+            color:
+                #172033;
+
+            min-height:
+                100vh;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+
+            width:
+                100%;
+
+            padding:
+                18px 7%;
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #172554,
+                    #2563eb
+                );
+
+            color:
+                white;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,.15);
+
+            position:
+                sticky;
+
+            top:
+                0;
+
+            z-index:
+                1000;
+        }
+
+
+        .logo {
+
+            font-size:
+                22px;
+
+            font-weight:
+                800;
+        }
+
+
+        .nav-buttons {
+
+            display:
+                flex;
+
+            gap:
+                10px;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
+        button,
+        .btn {
+
+            border:
+                none;
+
+            padding:
+                11px 18px;
+
+            border-radius:
+                9px;
+
+            cursor:
+                pointer;
+
+            font-weight:
+                700;
+
+            text-decoration:
+                none;
+
+            transition:
+                .3s;
+        }
+
+
+        button:hover,
+        .btn:hover {
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .btn-primary {
+
+            background:
+                #2563eb;
+
+            color:
+                white;
+        }
+
+
+        .btn-success {
+
+            background:
+                #16a34a;
+
+            color:
+                white;
+        }
+
+
+        .btn-danger {
+
+            background:
+                #dc2626;
+
+            color:
+                white;
+        }
+
+
+        .btn-light {
+
+            background:
+                white;
+
+            color:
+                #1e3a8a;
+        }
+
+
+        .btn-outline {
+
+            background:
+                transparent;
+
+            color:
+                white;
+
+            border:
+                1px solid
+                white;
+        }
+
+
+        /* =====================================================
+           PAGE CONTAINER
+        ===================================================== */
+
+        .container {
+
+            width:
+                90%;
+
+            max-width:
+                1200px;
+
+            margin:
+                auto;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            min-height:
+                570px;
+
+            margin-top:
+                35px;
+
+            padding:
+                70px;
+
+            border-radius:
+                25px;
+
+            color:
+                white;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                50px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #7c3aed
+                );
+
+            box-shadow:
+                0 20px 50px
+                rgba(37,99,235,.25);
+        }
+
+
+        .hero-content {
+
+            flex:
+                1;
+        }
+
+
+        .hero-content h1 {
+
+            font-size:
+                52px;
+
+            line-height:
+                1.1;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .hero-content p {
+
+            font-size:
+                19px;
+
+            line-height:
+                1.7;
+
+            margin-bottom:
+                30px;
+        }
+
+
+        .hero-card {
+
+            width:
+                350px;
+
+            padding:
+                30px;
+
+            border-radius:
+                20px;
+
+            background:
+                rgba(255,255,255,.15);
+
+            border:
+                1px solid
+                rgba(255,255,255,.25);
+
+            backdrop-filter:
+                blur(15px);
+        }
+
+
+        .hero-card h2 {
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .hero-card li {
+
+            list-style:
+                none;
+
+            margin:
+                15px 0;
+        }
+
+
+        /* =====================================================
+           AUTH CARD
+        ===================================================== */
+
+        .auth-card {
+
+            width:
+                100%;
+
+            max-width:
+                500px;
+
+            margin:
+                60px auto;
+
+            padding:
+                40px;
+
+            background:
+                white;
+
+            border-radius:
+                20px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,.08);
+        }
+
+
+        .auth-card h2 {
+
+            margin-bottom:
+                10px;
+        }
+
+
+        .auth-card p {
+
+            color:
+                #64748b;
+
+            margin-bottom:
+                25px;
+        }
+
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        .form-group {
+
+            margin-bottom:
+                20px;
+        }
+
+
+        label {
+
+            display:
+                block;
+
+            font-weight:
+                700;
+
+            margin-bottom:
+                8px;
+        }
+
+
+        input,
+        select,
+        textarea {
+
+            width:
+                100%;
+
+            padding:
+                13px;
+
+            border:
+                1px solid
+                #cbd5e1;
+
+            border-radius:
+                9px;
+
+            font-size:
+                15px;
+
+            outline:
+                none;
+        }
+
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+
+            border-color:
+                #2563eb;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(37,99,235,.1);
+        }
+
+
+        textarea {
+
+            min-height:
+                140px;
+
+            resize:
+                vertical;
+        }
+
+
+        /* =====================================================
+           DASHBOARD
+        ===================================================== */
+
+        .dashboard {
+
+            padding:
+                40px 0;
+        }
+
+
+        .dashboard-header {
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            margin-bottom:
+                30px;
+        }
+
+
+        .dashboard-header h1 {
+
+            font-size:
+                34px;
+        }
+
+
+        .dashboard-header p {
+
+            color:
+                #64748b;
+
+            margin-top:
+                5px;
+        }
+
+
+        /* =====================================================
+           STATISTICS
+        ===================================================== */
+
+        .stats {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap:
+                20px;
+
+            margin-bottom:
+                30px;
+        }
+
+
+        .stat-card {
+
+            background:
+                white;
+
+            padding:
+                25px;
+
+            border-radius:
+                17px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0,0,0,.06);
+
+            transition:
+                .3s;
+        }
+
+
+        .stat-card:hover {
+
+            transform:
+                translateY(-5px);
+        }
+
+
+        .stat-card span {
+
+            color:
+                #64748b;
+        }
+
+
+        .stat-card h2 {
+
+            font-size:
+                32px;
+
+            margin-top:
+                10px;
+        }
+
+
+        /* =====================================================
+           TABLE
+        ===================================================== */
+
+        .table-card {
+
+            background:
+                white;
+
+            padding:
+                25px;
+
+            border-radius:
+                18px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0,0,0,.06);
+
+            overflow-x:
+                auto;
+        }
+
+
+        .table-header {
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .search {
+
+            max-width:
+                300px;
+        }
+
+
+        table {
+
+            width:
+                100%;
+
+            border-collapse:
+                collapse;
+        }
+
+
+        th {
+
+            background:
+                #eff6ff;
+
+            color:
+                #1e3a8a;
+
+            padding:
+                15px;
+
+            text-align:
+                left;
+        }
+
+
+        td {
+
+            padding:
+                15px;
+
+            border-bottom:
+                1px solid
+                #e2e8f0;
+
+            vertical-align:
+                top;
+        }
+
+
+        tr:hover {
+
+            background:
+                #f8fafc;
+        }
+
+
+        /* =====================================================
+           STATUS
+        ===================================================== */
+
+        .status {
+
+            display:
+                inline-block;
+
+            padding:
+                7px 13px;
+
+            border-radius:
+                20px;
+
+            font-size:
+                13px;
+
+            font-weight:
+                700;
+        }
+
+
+        .status-pending {
+
+            background:
+                #fef3c7;
+
+            color:
+                #92400e;
+        }
+
+
+        .status-approved {
+
+            background:
+                #dcfce7;
+
+            color:
+                #166534;
+        }
+
+
+        .status-rejected {
+
+            background:
+                #fee2e2;
+
+            color:
+                #991b1b;
+        }
+
+
+        /* =====================================================
+           MODAL
+        ===================================================== */
+
+        .modal {
+
+            display:
+                none;
+
+            position:
+                fixed;
+
+            inset:
+                0;
+
+            background:
+                rgba(0,0,0,.55);
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            z-index:
+                2000;
+        }
+
+
+        .modal-content {
+
+            width:
+                90%;
+
+            max-width:
+                600px;
+
+            background:
+                white;
+
+            padding:
+                35px;
+
+            border-radius:
+                20px;
+
+            box-shadow:
+                0 20px 60px
+                rgba(0,0,0,.25);
+        }
+
+
+        .modal-header {
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            margin-bottom:
+                25px;
+        }
+
+
+        .close {
+
+            font-size:
+                28px;
+
+            cursor:
+                pointer;
+
+            color:
+                #64748b;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            text-align:
+                center;
+
+            padding:
+                35px;
+
+            color:
+                #64748b;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media(max-width:900px) {
+
+            .hero {
+
+                flex-direction:
+                    column;
+
+                padding:
+                    40px 25px;
+
+            }
+
+
+            .hero-content h1 {
+
+                font-size:
+                    40px;
+
+            }
+
+
+            .hero-card {
+
+                width:
+                    100%;
+
+            }
+
+
+            .stats {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+
+            }
+
+        }
+
+
+        @media(max-width:600px) {
+
+            .navbar {
+
+                flex-direction:
+                    column;
+
+                gap:
+                    15px;
+
+            }
+
+
+            .stats {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .dashboard-header {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+
+                gap:
+                    15px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        🎓 Student Permission Portal
+
+    </div>
+
+
+    <div class="nav-buttons">
+
+        <button
+            class="btn btn-outline"
+            onclick="showHome()"
+        >
+            Home
+        </button>
+
+
+        <button
+            class="btn btn-outline"
+            onclick="showLogin()"
+        >
+            Login
+        </button>
+
+
+        <button
+            class="btn btn-light"
+            onclick="showRegister()"
+        >
+            Register
+        </button>
+
+    </div>
+
+</nav>
+
+
+<div class="container">
+
+
+<!-- =========================================================
+     HOME
+========================================================= -->
+
+<section
+    id="homePage"
+    class="hero"
+>
+
+
+    <div class="hero-content">
+
+        <h1>
+
+            Student Permission
+            Request Portal
+
+        </h1>
+
+
+        <p>
+
+            A modern digital platform for
+            students to submit permission
+            requests and track approval status
+            online.
+
+        </p>
+
+
+        <button
+            class="btn btn-light"
+            onclick="showRegister()"
+        >
+
+            Get Started →
+
+        </button>
+
+
+        <button
+            class="btn btn-outline"
+            onclick="showLogin()"
+        >
+
+            Login
+
+        </button>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <h2>
+            🚀 Portal Features
+        </h2>
+
+
+        <ul>
+
+            <li>
+                ✔ Student Registration
+            </li>
+
+            <li>
+                ✔ Secure Login
+            </li>
+
+            <li>
+                ✔ Online Permission Request
+            </li>
+
+            <li>
+                ✔ Admin Approval
+            </li>
+
+            <li>
+                ✔ Request Status Tracking
+            </li>
+
+            <li>
+                ✔ Dashboard Statistics
+            </li>
+
+        </ul>
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================================================
+     REGISTER
+========================================================= -->
+
+<section
+    id="registerPage"
+    class="auth-card"
+    style="display:none"
+>
+
+
+    <h2>
+        Create Student Account
+    </h2>
+
+
+    <p>
+        Register to submit permission requests.
+    </p>
+
+
+    <form
+        id="registerForm"
+        onsubmit="registerUser(event)"
+    >
+
+
+        <div class="form-group">
+
+            <label>
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                id="registerName"
+                required
+                placeholder="Enter your full name"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="registerEmail"
+                required
+                placeholder="student@example.com"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Department
+            </label>
+
+            <select
+                id="registerDepartment"
+                required
+            >
+
+                <option value="">
+                    Select Department
+                </option>
+
+                <option>
+                    Computer Science Engineering
+                </option>
+
+                <option>
+                    Information Technology
+                </option>
+
+                <option>
+                    Electronics and Communication
+                </option>
+
+                <option>
+                    Electrical Engineering
+                </option>
+
+                <option>
+                    Mechanical Engineering
+                </option>
+
+                <option>
+                    Civil Engineering
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="registerPassword"
+                minlength="6"
+                required
+                placeholder="Minimum 6 characters"
+            >
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="btn btn-primary"
+        >
+
+            Create Account
+
+        </button>
+
+
+    </form>
+
+
+    <br>
+
+
+    <p>
+
+        Already have an account?
+
+        <a
+            href="#"
+            onclick="showLogin()"
+        >
+            Login
+        </a>
+
+    </p>
+
+
+</section>
+
+
+<!-- =========================================================
+     LOGIN
+========================================================= -->
+
+<section
+    id="loginPage"
+    class="auth-card"
+    style="display:none"
+>
+
+
+    <h2>
+        Student / Admin Login
+    </h2>
+
+
+    <p>
+        Login to access the permission portal.
+    </p>
+
+
+    <form
+        onsubmit="loginUser(event)"
+    >
+
+
+        <div class="form-group">
+
+            <label>
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="loginEmail"
+                required
+                placeholder="Enter your email"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="loginPassword"
+                required
+                placeholder="Enter your password"
+            >
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="btn btn-primary"
+        >
+
+            Login
+
+        </button>
+
+
+    </form>
+
+
+    <br>
+
+
+    <p>
+
+        Demo Admin:
+
+        <strong>
+            admin@college.edu
+        </strong>
+
+        <br>
+
+        Password:
+
+        <strong>
+            Admin@123
+        </strong>
+
+    </p>
+
+
+</section>
+
+
+<!-- =========================================================
+     STUDENT DASHBOARD
+========================================================= -->
+
+<section
+    id="studentDashboard"
+    class="dashboard"
+    style="display:none"
+>
+
+
+    <div class="dashboard-header">
+
+        <div>
+
+            <h1>
+                Student Dashboard
+            </h1>
+
+            <p id="welcomeStudent">
+                Welcome Student
+            </p>
+
+        </div>
+
+
+        <button
+            class="btn btn-primary"
+            onclick="openRequestModal()"
+        >
+
+            + New Permission Request
+
+        </button>
+
+    </div>
+
+
+    <div class="stats">
+
+
+        <div class="stat-card">
+
+            <span>
+                Total Requests
+            </span>
+
+            <h2 id="totalRequests">
+                0
+            </h2>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                Pending
+            </span>
+
+            <h2 id="pendingRequests">
+                0
+            </h2>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                Approved
+            </span>
+
+            <h2 id="approvedRequests">
+                0
+            </h2>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                Rejected
+            </span>
+
+            <h2 id="rejectedRequests">
+                0
+            </h2>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="table-card">
+
+        <div class="table-header">
+
+            <h2>
+                My Permission Requests
+            </h2>
+
+            <input
+                class="search"
+                id="studentSearch"
+                onkeyup="searchStudentTable()"
+                placeholder="Search..."
+            >
+
+        </div>
+
+
+        <table id="studentTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        ID
+                    </th>
+
+                    <th>
+                        Reason
+                    </th>
+
+                    <th>
+                        Date
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                    <th>
+                        Admin Comment
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="studentTableBody">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================================================
+     ADMIN DASHBOARD
+========================================================= -->
+
+<section
+    id="adminDashboard"
+    class="dashboard"
+    style="display:none"
+>
+
+
+    <div class="dashboard-header">
+
+        <div>
+
+            <h1>
+                Administrator Dashboard
+            </h1>
+
+            <p>
+                Manage student permission requests.
+            </p>
+
+        </div>
+
+
+        <button
+            class="btn btn-danger"
+            onclick="logout()"
+        >
+
+            Logout
+
+        </button>
+
+    </div>
+
+
+    <div class="stats">
+
+
+        <div class="stat-card">
+
+            <span>
+                Total Requests
+            </span>
+
+            <h2 id="adminTotal">
+                0
+            </h2>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                Pending
+            </span>
+
+            <h2 id="adminPending">
+                0
+            </h2>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                Approved
+            </span>
+
+            <h2 id="adminApproved">
+                0
+            </h2>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                Rejected
+            </span>
+
+            <h2 id="adminRejected">
+                0
+            </h2>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="table-card">
+
+        <div class="table-header">
+
+            <h2>
+                All Permission Requests
+            </h2>
+
+
+            <input
+                class="search"
+                id="adminSearch"
+                onkeyup="searchAdminTable()"
+                placeholder="Search requests..."
+            >
+
+        </div>
+
+
+        <table id="adminTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        ID
+                    </th>
+
+                    <th>
+                        Student
+                    </th>
+
+                    <th>
+                        Reason
+                    </th>
+
+                    <th>
+                        Dates
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                    <th>
+                        Action
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="adminTableBody">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+</section>
+
+
+</div>
+
+
+<!-- =========================================================
+     PERMISSION REQUEST MODAL
+========================================================= -->
+
+<div
+    id="requestModal"
+    class="modal"
+>
+
+
+    <div class="modal-content">
+
+
+        <div class="modal-header">
+
+            <h2>
+                New Permission Request
+            </h2>
+
+
+            <span
+                class="close"
+                onclick="closeRequestModal()"
+            >
+                ×
+            </span>
+
+        </div>
+
+
+        <form
+            onsubmit="submitRequest(event)"
+        >
+
+
+            <div class="form-group">
+
+                <label>
+                    Permission Reason
+                </label>
+
+                <select
+                    id="requestReason"
+                    required
+                >
+
+                    <option value="">
+                        Select Reason
+                    </option>
+
+                    <option>
+                        Medical Appointment
+                    </option>
+
+                    <option>
+                        Family Function
+                    </option>
+
+                    <option>
+                        Personal Work
+                    </option>
+
+                    <option>
+                        College Event
+                    </option>
+
+                    <option>
+                        Academic Purpose
+                    </option>
+
+                    <option>
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    From Date
+                </label>
+
+                <input
+                    type="date"
+                    id="fromDate"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    To Date
+                </label>
+
+                <input
+                    type="date"
+                    id="toDate"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Description
+                </label>
+
+                <textarea
+                    id="requestDescription"
+                    maxlength="1000"
+                    required
+                    placeholder="Explain your request..."
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn btn-primary"
+            >
+
+                Submit Request
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn btn-danger"
+                onclick="closeRequestModal()"
+            >
+
+                Cancel
+
+            </button>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    © 2026 Student Permission Request Portal
+
+    <br>
+
+    Web Technology Project
+
+</footer>
+
+
+<script>
+
+
+/* ============================================================
+   LOCAL STORAGE
+============================================================ */
+
+
+let users =
+    JSON.parse(
+        localStorage.getItem("portalUsers")
+    ) || [];
+
+
+let permissionRequests =
+    JSON.parse(
+        localStorage.getItem("permissionRequests")
+    ) || [];
+
+
+let currentUser =
+    JSON.parse(
+        localStorage.getItem("currentUser")
+    ) || null;
+
+
+/* ============================================================
+   DEFAULT ADMIN
+============================================================ */
+
+if (
+    !users.some(
+        user =>
+            user.email ===
+            "admin@college.edu"
+    )
+) {
+
+    users.push({
+
+        name:
+            "College Administrator",
+
+        email:
+            "admin@college.edu",
+
+        password:
+            "Admin@123",
+
+        department:
+            "Administration",
+
+        role:
+            "admin"
+
+    });
+
+
+    localStorage.setItem(
+        "portalUsers",
+        JSON.stringify(users)
+    );
+
+}
+
+
+/* ============================================================
+   PAGE NAVIGATION
+============================================================ */
+
+function hideAllPages() {
+
+    document.getElementById(
+        "homePage"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "registerPage"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "loginPage"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "studentDashboard"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "adminDashboard"
+    ).style.display = "none";
+
+}
+
+
+function showHome() {
+
+    hideAllPages();
+
+    document.getElementById(
+        "homePage"
+    ).style.display = "flex";
+
+}
+
+
+function showRegister() {
+
+    hideAllPages();
+
+    document.getElementById(
+        "registerPage"
+    ).style.display = "block";
+
+}
+
+
+function showLogin() {
+
+    hideAllPages();
+
+    document.getElementById(
+        "loginPage"
+    ).style.display = "block";
+
+}
+
+
+/* ============================================================
+   REGISTER USER
+============================================================ */
+
+function registerUser(event) {
+
+    event.preventDefault();
+
+
+    const name =
+        document.getElementById(
+            "registerName"
+        ).value.trim();
+
+
+    const email =
+        document.getElementById(
+            "registerEmail"
+        ).value.trim().toLowerCase();
+
+
+    const department =
+        document.getElementById(
+            "registerDepartment"
+        ).value;
+
+
+    const password =
+        document.getElementById(
+            "registerPassword"
+        ).value;
+
+
+    if (password.length < 6) {
+
+        alert(
+            "Password must contain at least 6 characters."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        users.some(
+            user =>
+                user.email === email
+        )
+    ) {
+
+        alert(
+            "Email already registered."
+        );
+
+        return;
+
+    }
+
+
+    const newUser = {
+
+        name:
+            name,
+
+        email:
+            email,
+
+        department:
+            department,
+
+        password:
+            password,
+
+        role:
+            "student"
+
+    };
+
+
+    users.push(
+        newUser
+    );
+
+
+    localStorage.setItem(
+        "portalUsers",
+        JSON.stringify(users)
+    );
+
+
+    alert(
+        "Registration successful! Please login."
+    );
+
+
+    document.getElementById(
+        "registerForm"
+    ).reset();
+
+
+    showLogin();
+
+}
+
+
+/* ============================================================
+   LOGIN
+============================================================ */
+
+function loginUser(event) {
+
+    event.preventDefault();
+
+
+    const email =
+        document.getElementById(
+            "loginEmail"
+        ).value.trim().toLowerCase();
+
+
+    const password =
+        document.getElementById(
+            "loginPassword"
+        ).value;
+
+
+    const user =
+        users.find(
+            u =>
+                u.email === email &&
+                u.password === password
+        );
+
+
+    if (!user) {
+
+        alert(
+            "Invalid email or password."
+        );
+
+        return;
+
+    }
+
+
+    currentUser =
+        user;
+
+
+    localStorage.setItem(
+        "currentUser",
+        JSON.stringify(user)
+    );
+
+
+    if (
+        user.role === "admin"
+    ) {
+
+        showAdminDashboard();
+
+    } else {
+
+        showStudentDashboard();
+
+    }
+
+}
+
+
+/* ============================================================
+   STUDENT DASHBOARD
+============================================================ */
+
+function showStudentDashboard() {
+
+    hideAllPages();
+
+
+    document.getElementById(
+        "studentDashboard"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "welcomeStudent"
+    ).innerText =
+        "Welcome, " +
+        currentUser.name;
+
+
+    loadStudentRequests();
+
+}
+
+
+/* ============================================================
+   LOAD STUDENT REQUESTS
+============================================================ */
+
+function loadStudentRequests() {
+
+    const body =
+        document.getElementById(
+            "studentTableBody"
+        );
+
+
+    body.innerHTML = "";
+
+
+    const myRequests =
+        permissionRequests.filter(
+            request =>
+                request.studentEmail ===
+                currentUser.email
+        );
+
+
+    let pending = 0;
+
+    let approved = 0;
+
+    let rejected = 0;
+
+
+    myRequests.forEach(
+        request => {
+
+            if (
+                request.status ===
+                "Pending"
+            )
+                pending++;
+
+
+            if (
+                request.status ===
+                "Approved"
+            )
+                approved++;
+
+
+            if (
+                request.status ===
+                "Rejected"
+            )
+                rejected++;
+
+
+            let statusClass =
+                "status-pending";
+
+
+            if (
+                request.status ===
+                "Approved"
+            )
+                statusClass =
+                    "status-approved";
+
+
+            if (
+                request.status ===
+                "Rejected"
+            )
+                statusClass =
+                    "status-rejected";
+
+
+            const row =
+                document.createElement(
+                    "tr"
+                );
+
+
+            row.innerHTML = `
+
+                <td>
+                    #${request.id}
+                </td>
+
+                <td>
+                    ${request.reason}
+
+                    <br>
+
+                    <small>
+                        ${request.description}
+                    </small>
+                </td>
+
+                <td>
+                    ${request.fromDate}
+                    →
+                    ${request.toDate}
+                </td>
+
+                <td>
+
+                    <span
+                        class="status ${statusClass}"
+                    >
+
+                        ${request.status}
+
+                    </span>
+
+                </td>
+
+                <td>
+                    ${request.comment || "Waiting for admin review"}
+                </td>
+
+            `;
+
+
+            body.appendChild(
+                row
+            );
+
+        }
+    );
+
+
+    document.getElementById(
+        "totalRequests"
+    ).innerText =
+        myRequests.length;
+
+
+    document.getElementById(
+        "pendingRequests"
+    ).innerText =
+        pending;
+
+
+    document.getElementById(
+        "approvedRequests"
+    ).innerText =
+        approved;
+
+
+    document.getElementById(
+        "rejectedRequests"
+    ).innerText =
+        rejected;
+
+}
+
+
+/* ============================================================
+   OPEN REQUEST MODAL
+============================================================ */
+
+function openRequestModal() {
+
+    document.getElementById(
+        "requestModal"
+    ).style.display =
+        "flex";
+
+
+    const today =
+        new Date()
+        .toISOString()
+        .split("T")[0];
+
+
+    document.getElementById(
+        "fromDate"
+    ).min =
+        today;
+
+
+    document.getElementById(
+        "toDate"
+    ).min =
+        today;
+
+}
+
+
+/* ============================================================
+   CLOSE REQUEST MODAL
+============================================================ */
+
+function closeRequestModal() {
+
+    document.getElementById(
+        "requestModal"
+    ).style.display =
+        "none";
+
+}
+
+
+/* ============================================================
+   SUBMIT REQUEST
+============================================================ */
+
+function submitRequest(event) {
+
+    event.preventDefault();
+
+
+    const reason =
+        document.getElementById(
+            "requestReason"
+        ).value;
+
+
+    const fromDate =
+        document.getElementById(
+            "fromDate"
+        ).value;
+
+
+    const toDate =
+        document.getElementById(
+            "toDate"
+        ).value;
+
+
+    const description =
+        document.getElementById(
+            "requestDescription"
+        ).value.trim();
+
+
+    if (
+        toDate < fromDate
+    ) {
+
+        alert(
+            "To date cannot be before from date."
+        );
+
+        return;
+
+    }
+
+
+    const newRequest = {
+
+        id:
+            Date.now(),
+
+        studentName:
+            currentUser.name,
+
+        studentEmail:
+            currentUser.email,
+
+        department:
+            currentUser.department,
+
+        reason:
+            reason,
+
+        fromDate:
+            fromDate,
+
+        toDate:
+            toDate,
+
+        description:
+            description,
+
+        status:
+            "Pending",
+
+        comment:
+            "",
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    permissionRequests.push(
+        newRequest
+    );
+
+
+    localStorage.setItem(
+
+        "permissionRequests",
+
+        JSON.stringify(
+            permissionRequests
+        )
+
+    );
+
+
+    alert(
+        "Permission request submitted successfully!"
+    );
+
+
+    document.querySelector(
+        "#requestModal form"
+    ).reset();
+
+
+    closeRequestModal();
+
+
+    loadStudentRequests();
+
+}
+
+
+/* ============================================================
+   ADMIN DASHBOARD
+============================================================ */
+
+function showAdminDashboard() {
+
+    hideAllPages();
+
+
+    document.getElementById(
+        "adminDashboard"
+    ).style.display =
+        "block";
+
+
+    loadAdminRequests();
+
+}
+
+
+/* ============================================================
+   LOAD ADMIN REQUESTS
+============================================================ */
+
+function loadAdminRequests() {
+
+    const body =
+        document.getElementById(
+            "adminTableBody"
+        );
+
+
+    body.innerHTML = "";
+
+
+    let pending = 0;
+
+    let approved = 0;
+
+    let rejected = 0;
+
+
+    permissionRequests.forEach(
+        request => {
+
+            if (
+                request.status ===
+                "Pending"
+            )
+                pending++;
+
+
+            if (
+                request.status ===
+                "Approved"
+            )
+                approved++;
+
+
+            if (
+                request.status ===
+                "Rejected"
+            )
+                rejected++;
+
+
+            let statusClass =
+                "status-pending";
+
+
+            if (
+                request.status ===
+                "Approved"
+            )
+                statusClass =
+                    "status-approved";
+
+
+            if (
+                request.status ===
+                "Rejected"
+            )
+                statusClass =
+                    "status-rejected";
+
+
+            let action = "";
+
+
+            if (
+                request.status ===
+                "Pending"
+            ) {
+
+                action = `
+
+                    <button
+                        class="btn btn-success"
+                        onclick="updateRequest(
+                            ${request.id},
+                            'Approved'
+                        )"
+                    >
+
+                        Approve
+
+                    </button>
+
+
+                    <button
+                        class="btn btn-danger"
+                        onclick="updateRequest(
+                            ${request.id},
+                            'Rejected'
+                        )"
+                    >
+
+                        Reject
+
+                    </button>
+
+                `;
+
+            } else {
+
+                action = `
+
+                    <strong>
+                        ${request.status}
+                    </strong>
+
+                    <br>
+
+                    <small>
+                        ${request.comment || ""}
+                    </small>
+
+                `;
+
+            }
+
+
+            const row =
+                document.createElement(
+                    "tr"
+                );
+
+
+            row.innerHTML = `
+
+                <td>
+                    #${request.id}
+                </td>
+
+
+                <td>
+
+                    <strong>
+                        ${request.studentName}
+                    </strong>
+
+                    <br>
+
+                    <small>
+                        ${request.studentEmail}
+                    </small>
+
+                    <br>
+
+                    <small>
+                        ${request.department}
+                    </small>
+
+                </td>
+
+
+                <td>
+
+                    <strong>
+                        ${request.reason}
+                    </strong>
+
+                    <br>
+
+                    <small>
+                        ${request.description}
+                    </small>
+
+                </td>
+
+
+                <td>
+
+                    ${request.fromDate}
+
+                    →
+
+                    ${request.toDate}
+
+                </td>
+
+
+                <td>
+
+                    <span
+                        class="status ${statusClass}"
+                    >
+
+                        ${request.status}
+
+                    </span>
+
+                </td>
+
+
+                <td>
+
+                    ${action}
+
+                </td>
+
+            `;
+
+
+            body.appendChild(
+                row
+            );
+
+        }
+    );
+
+
+    document.getElementById(
+        "adminTotal"
+    ).innerText =
+        permissionRequests.length;
+
+
+    document.getElementById(
+        "adminPending"
+    ).innerText =
+        pending;
+
+
+    document.getElementById(
+        "adminApproved"
+    ).innerText =
+        approved;
+
+
+    document.getElementById(
+        "adminRejected"
+    ).innerText =
+        rejected;
+
+}
+
+
+/* ============================================================
+   APPROVE / REJECT REQUEST
+============================================================ */
+
+function updateRequest(
+    requestId,
+    newStatus
+) {
+
+
+    const request =
+        permissionRequests.find(
+            r =>
+                r.id === requestId
+        );
+
+
+    if (!request)
+        return;
+
+
+    let comment =
+        prompt(
+            "Enter admin comment:"
+        );
+
+
+    if (
+        comment === null
+    ) {
+
+        comment = "";
+
+    }
+
+
+    request.status =
+        newStatus;
+
+
+    request.comment =
+        comment;
+
+
+    localStorage.setItem(
+
+        "permissionRequests",
+
+        JSON.stringify(
+            permissionRequests
+        )
+
+    );
+
+
+    alert(
+        "Request has been " +
+        newStatus.toLowerCase() +
+        "."
+    );
+
+
+    loadAdminRequests();
+
+}
+
+
+/* ============================================================
+   SEARCH STUDENT TABLE
+============================================================ */
+
+function searchStudentTable() {
+
+    const input =
+        document.getElementById(
+            "studentSearch"
+        );
+
+
+    const value =
+        input.value.toLowerCase();
+
+
+    const rows =
+        document
+        .getElementById(
+            "studentTable"
+        )
+        .getElementsByTagName(
+            "tr"
+        );
+
+
+    for (
+        let i = 1;
+        i < rows.length;
+        i++
+    ) {
+
+        rows[i].style.display =
+            rows[i]
+            .innerText
+            .toLowerCase()
+            .includes(value)
+                ? ""
+                : "none";
+
+    }
+
+}
+
+
+/* ============================================================
+   SEARCH ADMIN TABLE
+============================================================ */
+
+function searchAdminTable() {
+
+    const input =
+        document.getElementById(
+            "adminSearch"
+        );
+
+
+    const value =
+        input.value.toLowerCase();
+
+
+    const rows =
+        document
+        .getElementById(
+            "adminTable"
+        )
+        .getElementsByTagName(
+            "tr"
+        );
+
+
+    for (
+        let i = 1;
+        i < rows.length;
+        i++
+    ) {
+
+        rows[i].style.display =
+            rows[i]
+            .innerText
+            .toLowerCase()
+            .includes(value)
+                ? ""
+                : "none";
+
+    }
+
+}
+
+
+/* ============================================================
+   LOGOUT
+============================================================ */
+
+function logout() {
+
+    currentUser =
+        null;
+
+
+    localStorage.removeItem(
+        "currentUser"
+    );
+
+
+    showHome();
+
+}
+
+
+/* ============================================================
+   DATE VALIDATION
+============================================================ */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const from =
+            document.getElementById(
+                "fromDate"
+            );
+
+
+        const to =
+            document.getElementById(
+                "toDate"
+            );
+
+
+        if (
+            from &&
+            to
+        ) {
+
+            from.addEventListener(
+                "change",
+                function() {
+
+                    to.min =
+                        from.value;
+
+                }
+            );
+
+        }
+
+
+        showHome();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
+```
